@@ -65,7 +65,7 @@ With this event you take what the user is typing, everytime the user types somet
 
 ### Blur event
 
-With this event you know when the component lose the focus. ```-von:blur```
+With this event you know when the component lose the focus. ```v-on:blur```
 
 ### Reset method
 
