@@ -40,7 +40,7 @@ I'd declare the component like this:
 
 ### Taking the picked id
 
-The component emits an event "value" with the id of the selected option (if no option was selected the id is empty).
+The component emits an event *value* with the id of the selected option (if no option was selected the id is empty).
 So if I want to know what was the selected option I need to add the ```v-on:value``` attribute. The component'd be:
 ```html
 <input-autocomplete
@@ -51,13 +51,13 @@ So if I want to know what was the selected option I need to add the ```v-on:valu
 ></input-autocomplete>
 ```
 
-This way I take the value (arguments[0]) and set it to "myVariable", if I need I can call a method and pass the value as a parameter ``` v-on:value="myMethod(arguments[0])"```
+This way I take the value (arguments[0]) and set it to *myVariable*, if I need I can call a method and pass the value as a parameter ``` v-on:value="myMethod(arguments[0])"```
 
 ### Error event
 
-The component also emits an event "error" with true or false as value, the default value is false until the user type the first character, then the value is true until the user type something that matches one of the options or select one of them.
+The component also emits an event *error* with true or false as value, the default value is false until the user type the first character, then the value is true until the user type something that matches one of the options or select one of them.
 
-If you want to use this event add the ```v-on:error``` attribute and it works the same way that the "value" event
+If you want to use this event add the ```v-on:error``` attribute and it works the same way that the *value* event
 
 ### Text event
 
@@ -70,7 +70,7 @@ With this event you know when the component lose the focus. ```v-on:blur```
 ### Reset method
 
 This component has a reset() method and you can use it to clear the value of the input and the selected id inside the component.
-To use it you'll need to add the "ref" attribute in the component and use it to call the method.
+To use it you'll need to add the *ref* attribute in the component and use it to call the method.
 Example:
 
 * Html
@@ -90,16 +90,16 @@ Example:
 ```javacript
 vm.$refs.autocomplete.reset();
 ```
-(Where "vm" is your Vue instance, if you are inside Vue replace it with "this")
+(Where *vm* is your Vue instance, if you are inside Vue replace it with *this*)
 
 ### Styling
 
 When you use this component in your page you'll see that the HTML renders the ```<input type="text">``` inside a ```<div>```.
 You can add a class to this ```<div>```, as well to the ```<input>```, to do it add the attribute "groupclass" and "classname", respectively.
 
-If you need to add a class when the error (emitted by the error event) is true, add the attribute "grouperror" (```<div>```) and/or "errorclass" (```<input>```).
+If you need to add a class when the error (emitted by the error event) is true, add the attribute *grouperror* (```<div>```) and/or *errorclass* (```<input>```).
 
-To add a label to the input add the "label" attribute with the name of the label and "labelclass" if you want to add a class to the label. (The label will render as a ```<div>``` tag)
+To add a label to the input add the *label* attribute with the name of the label and *labelclass* if you want to add a class to the label. (The label will render as a ```<div>``` tag)
 
 ### HTML attributes
 
