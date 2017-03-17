@@ -55,7 +55,7 @@ This way I take the value (arguments[0]) and set it to *myVariable*, if I need I
 
 ### Error event
 
-The component also emits an event *error* with true or false as value, the default value is false until the user type the first character, then the value is true until the user type something that matches one of the options or select one of them.
+The component also emits an event *error* with true or false as value, the default value is false until the user types the first character, then the value is true until the user types something that matches one of the options or select one of them.
 
 If you want to use this event add the ```v-on:error``` attribute and it works the same way that the *value* event
 
