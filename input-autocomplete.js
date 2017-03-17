@@ -50,11 +50,11 @@ Vue.component('input-autocomplete', {
 	methods: {
 		updateValue() {
 			let value = '';
-			let selecionado = this.list.filter(item => {
+			let selected = this.list.filter(item => {
 				return item[this.desc] == this.item;
 			});
-			if (selecionado.length === 1) {
-				value = selecionado[0][this.id];
+			if (selected.length === 1) {
+				value = selected[0][this.id];
 			}
 			this.itemId = value;
 			this.error = (this.itemId === '');
