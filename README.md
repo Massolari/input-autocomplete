@@ -73,7 +73,7 @@ This component has a reset() method and you can use it to clear the value of the
 To use it you'll need to add the *ref* attribute in the component and use it to call the method.
 Example:
 
-* Html
+* HTML
 ```html
 <input-autocomplete
     v-on:value="myVariable = arguments[0]"
@@ -95,7 +95,7 @@ vm.$refs.autocomplete.reset();
 ### Styling
 
 When you use this component in your page you'll see that the HTML renders the ```<input type="text">``` inside a ```<div>```.
-You can add a class to this ```<div>```, as well to the ```<input>```, to do it add the attribute "groupclass" and "classname", respectively.
+You can add a class to this ```<div>```, as well to the ```<input>```, to do it add the attribute *groupclass* and *classname*, respectively.
 
 If you need to add a class when the error (emitted by the error event) is true, add the attribute *grouperror* (```<div>```) and/or *errorclass* (```<input>```).
 
