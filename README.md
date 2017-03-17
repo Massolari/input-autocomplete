@@ -2,6 +2,8 @@
 
 An autocomplete component using Vuejs and the HTML5's datalist tag.
 
+Check the [demo](http://run.plnkr.co/plunks/3dEO6Fk7x7VBaTCRcj1n/)
+
 ## Installation
 
 * Download Vuejs in the official page (https://vuejs.org)
