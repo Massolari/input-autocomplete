@@ -59,11 +59,11 @@ This way I take the value (arguments[0]) and set it to *myVariable*, if I need I
 
 The component also emits an event *error* with true or false as value, the default value is false until the user types the first character, then the value is true until the user types something that matches one of the options or select one of them.
 
-If you want to use this event add the ```v-on:error``` attribute and it works the same way that the *value* event
+If you want to use this event add the ```v-on:error``` attribute. It works the same way that the *value* event
 
 ### Text event
 
-With this event you take what the user is typing, everytime the user types something the component emits this event with the text. ```v-on:text```
+With this event you take what the user is typing, every time the user types something the component emits this event with the text. ```v-on:text```
 
 ### Blur event
 
