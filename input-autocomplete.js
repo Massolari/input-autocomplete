@@ -16,6 +16,7 @@ Vue.component('input-autocomplete', {
 		:class="checkClass"
 		v-model="item"
 		v-on:blur="$emit('blur', true)"
+		v-on:click="$emit('click')"
 		/>
 		<datalist id="itens">
 			<option v-for="c in list" :data-value="c[id]" :value="c[desc]" />
