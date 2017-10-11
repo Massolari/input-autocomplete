@@ -9,7 +9,7 @@ Vue.component('input-autocomplete', {
 		:placeholder="placeholder"
 		type="text"
 		:maxlength="maxlength"
-		list="itens"
+		:list="hash"
 		:name="name"
 		:id="id"
 		:pattern="pattern"
@@ -18,7 +18,7 @@ Vue.component('input-autocomplete', {
 		v-on:blur="$emit('blur', true)"
 		v-on:click="$emit('click')"
 		/>
-		<datalist id="itens">
+		<datalist :id="hash">
 			<option v-for="c in list" :data-value="c[id]" :value="c[desc]" />
 		</datalist>
 	</div>
@@ -45,36 +45,56 @@ Vue.component('input-autocomplete', {
 		return {
 			item: this.value,
 			itemId: '',
-			error: false
+			error: false,
+			hash: Math.random().toString(36).substr(2)+Math.random().toString(36).substr(2)
 		}
 	},
 	methods: {
 		updateValue() {
-			let value = '';
-			let selected = this.list.filter(item => {
-				return item[this.desc] == this.item;
-			});
+			let value = ''
+			let selected = this.list.filter(item => item[this.desc] == this.item )
 			if (selected.length === 1) {
-				value = selected[0][this.id];
+				value = selected[0][this.id]
 			}
-			this.itemId = value;
-			this.error = (this.itemId === '');
-			this.$emit('error', this.error);
-			this.$emit('value', value);
-			this.$emit('text', this.item);
+			this.itemId = value
+			this.error = (this.itemId === '')
+			this.$emit('error', this.error)
+			this.$emit('input', value)
+			this.$emit('text', this.item)
 		},
 		reset() {
-			this.item = "";
-			this.itemId = "";
-			this.error = false;
+			this.item = ""
+			this.itemId = ""
+			this.error = false
+		},
+		selectDesc(desc) {
+			const filtered = this.list.filter(item => item[this.desc] == desc)
+			if (filtered.length != 1) {
+				console.log("selectDesc() error, zero or more than one item was found!")
+				return
+			}
+			this.item = desc
+			this.updateValue()
+		},
+		selectId(id) {
+			const filtered = this.list.filter(item => item[this.id] == id)
+			if (filtered.length != 1) {
+				console.log("selectId() error, zero or more than one item was found!")
+				return
+			}
+			this.item = filtered[0][this.desc]
+			this.updateValue()
+		},
+		setText(text) {
+			this.item = text
 		}
 	},
 	computed: {
 		checkClass() {
-			return (this.error) ? `${this.classname} ${this.errorclass}` : this.classname;
+			return (this.error) ? `${this.classname} ${this.errorclass}` : this.classname
 		},
 		checkGroupClass() {
-			return (this.error) ? `${this.groupclass} ${this.grouperror}` : this.groupclass;
+			return (this.error) ? `${this.groupclass} ${this.grouperror}` : this.groupclass
 		}
 	}
-});
+})
