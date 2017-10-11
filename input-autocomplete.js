@@ -60,6 +60,7 @@ Vue.component('input-autocomplete', {
 			this.error = (this.itemId === '')
 			this.$emit('error', this.error)
 			this.$emit('input', value)
+			this.$emit('value', value)
 			this.$emit('text', this.item)
 		},
 		reset() {
