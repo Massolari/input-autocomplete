@@ -42,8 +42,20 @@ I'd declare the component like this:
 
 ### Taking the picked id
 
-The component emits an event *value* with the id of the selected option (if no option was selected the id is empty).
-So if I want to know what was the selected option I need to add the ```v-on:value``` attribute. The component'd be:
+
+The component emits an event *input* with the id of the selected option (if no option was selected the id is empty).
+So if I want to know what was the selected option I just need to add a ```v-model``` attribute. The component'd be:
+```html
+<input-autocomplete
+    v-model="myVariable"
+    :list="array"
+    id="key"
+    desc="name"
+></input-autocomplete>
+```
+
+The old way to pick the id is using the *value* event through the ```arguments[0]``` variable. You'll need to add the ```v-on:value``` attribute. The component'd be:
+
 ```html
 <input-autocomplete
     v-on:value="myVariable = arguments[0]"
@@ -93,6 +105,34 @@ Example:
 vm.$refs.autocomplete.reset();
 ```
 (Where *vm* is your Vue instance, if you are inside Vue replace it with *this*)
+
+### SelectId and SelectDesc Method
+
+If you want the autocomplete to set an item in a list as selected you want to use the ```selectId(id)``` or ```selectDesc(desc)``` methods.
+
+Using the ```selectId(id)``` method you just need to pass the item's *id* and it'll select the item and trigger all the events.
+The ```selectDesc(desc)``` method works the same way, obviously, you need to pass the *desc* and it'll search the item in the list and selected it.
+
+**Attention: If there are more than one item with the specified *id* or *desc* the method will throw an error on the console and not select anything**
+
+The usage is similar to the *reset* method.
+Example:
+```javacript
+vm.$refs.autocomplete.selectId(4);
+vm.$refs.autocomplete.selectDesc("Roger");
+```
+(Where *vm* is your Vue instance, if you are inside Vue replace it with *this*)
+
+### SetText method
+
+This method is used when you just want to set a text on the input, without triggering any event, simple like that.
+The usage is similar the above methods:
+Example:
+```javacript
+vm.$refs.autocomplete.setText("Some text");
+```
+(Where *vm* is your Vue instance, if you are inside Vue replace it with *this*)
+
 
 ### Styling
 
