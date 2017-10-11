@@ -58,18 +58,55 @@ The old way to pick the id is using the *value* event through the ```arguments[0
 
 ```html
 <input-autocomplete
-    v-on:value="myVariable = arguments[0]"
+    v-on:value="val => { myVariable = val }"
     :list="array"
     id="key"
     desc="name"
 ></input-autocomplete>
 ```
 
-This way I take the value (arguments[0]) and set it to *myVariable*, if I need I can call a method and pass the value as a parameter ``` v-on:value="myMethod(arguments[0])"```
+This way I take the value and set it to *myVariable*, if I need I can call a method and the value is passed as a parameter ``` v-on:value="myMethod"```
+
+### How to use the events
+
+To use the events listed below you just need to add an ```v-on:``` directive on the component passing a function, that function will be called everytime the event triggers, example:
+
+```html
+<input-autocomplete
+    v-on:error="err => { myErrorVariable = err }"
+    v-on:text="myTextMethod"
+    v-on:blur="myBlurMethod"
+    :list="array"
+    id="key"
+    desc="name"
+></input-autocomplete>
+```
+
+and on Vue:
+
+```javascript
+new Vue({
+    ...
+    data: {
+        myErrorVariable: false
+    },
+    ...
+    methods: {
+        myTextMethod(text) {
+            // do something with text variable
+        },
+        myBlurMethod(blur) {
+            // do something with blur variable
+        }
+    }
+    ...
+})
+```
 
 ### Error event
 
 The component also emits an event *error* with true or false as value, the default value is false until the user types the first character, then the value is true until the user types something that matches one of the options or select one of them.
+
 
 If you want to use this event add the ```v-on:error``` attribute. It works the same way that the *value* event
 
@@ -90,10 +127,10 @@ Example:
 * HTML
 ```html
 <input-autocomplete
-    v-on:value="myVariable = arguments[0]"
-    v-on:error="disableButton(arguments[0])"
-    v-on:blur="checkValue()"
-    v-on:text="text = arguments[0]"
+    v-on:value="val => { myVariable = val }"
+    v-on:error="disableButton"
+    v-on:blur="checkValue"
+    v-on:text="txt => { text = txt }"
     :list="array"
     id="key"
     desc="name"
